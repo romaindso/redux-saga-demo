@@ -1,0 +1,5 @@
+// Call
+function* fetchProducts() {
+  const products = yield call(Api.fetch, '/products')
+  // handle the response...
+}

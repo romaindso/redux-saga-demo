@@ -1,0 +1,1 @@
+dispatch(loginThunk(username, password));

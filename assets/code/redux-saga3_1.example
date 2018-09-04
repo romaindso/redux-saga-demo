@@ -1,0 +1,4 @@
+// TakeLatest
+function* watchFetchProducts() {
+  yield TakeLatest('PRODUCTS_REQUESTED', fetchProducts)
+}

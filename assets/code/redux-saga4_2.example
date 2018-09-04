@@ -1,0 +1,8 @@
+// Select
+export const getCart = state => state.cart
+
+function* checkout() {
+  // query the state using the exported selector
+  const cart = yield select(getCart)
+  // ...
+}
