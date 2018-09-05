@@ -22,6 +22,7 @@ import createTheme from "spectacle/lib/themes/default";
 
 // Require CSS
 require("normalize.css");
+import "./index.css";
 
 const theme = createTheme(
   {
@@ -47,10 +48,10 @@ export default class Presentation extends React.Component {
       >
         <Slide transition={["zoom"]} bgColor="primary">
           <Heading size={1} fit caps lineHeight={1} textColor="secondary">
-            Redux
+            Redux Saga
           </Heading>
           <Text margin="10px 0 0" textColor="tertiary" size={1} fit bold italic>
-            "predictable state container for JavaScript apps"
+            "générateur de bonheur"
           </Text>
         </Slide>
 
@@ -105,7 +106,7 @@ export default class Presentation extends React.Component {
             Single source of truth
           </Heading>
           <br />
-          <Text textSize={35}>
+          <Text textSize={25}>
             The state of your whole application is stored in an object tree
             within a single store.
           </Text>
@@ -122,11 +123,10 @@ export default class Presentation extends React.Component {
             State is read-only
           </Heading>
           <br />
-          <Text textSize={35}>
+          <Text textSize={25}>
             The only way to change the state is to emit an action, an object
             describing what happened.
           </Text>
-          <br />
           <br />
           <CodePane
             lang="javascript"
@@ -140,26 +140,28 @@ export default class Presentation extends React.Component {
             Changes are made with pure functions
           </Heading>
           <br />
-          <Text textSize={35}>
+          <Text fit>
             To specify how the state tree is transformed by actions, you write
             pure reducers.
           </Text>
         </Slide>
 
-        <Slide transition={["fade"]} bgColor="tertiary">
-          <Heading size={4} textColor="primary" caps>
-            Reducers
-          </Heading>
-          <Text textSize={30}>take the previous state and an action...</Text>
-          <Text textSize={30}>handle differents action type...</Text>
-          <Text textSize={30}>and return a new state for each one</Text>
-          <br />
-          <CodePane
-            lang="javascript"
-            source={require("raw-loader!../assets/code/core-store3.example")}
-            textSize={15}
-          />
-        </Slide>
+        <CodeSlide
+          bgColor="#2d2d2d"
+          textSize={20}
+          transition={[]}
+          lang="js"
+          code={require("raw-loader!../assets/code/core-store3.example")}
+          ranges={[
+            { loc: [0, 0], title: "Reducers" },
+            { loc: [0, 1] },
+            { loc: [9, 10], note: "take the previous state and an action..." },
+            { loc: [10, 11] },
+            { loc: [11, 12] },
+            { loc: [19, 20], note: "handle differents action type..." },
+            { loc: [11, 19], note: "and return a new state for each one" }
+          ]}
+        />
 
         <Slide transition={["fade"]} bgColor="tertiary" textColor="primary">
           <Heading textColor="secondary" caps>
@@ -209,25 +211,21 @@ export default class Presentation extends React.Component {
           </Text>
         </Slide>
 
-        <Slide transition={["fade"]} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
-            Thunk
-          </Heading>
-          <br />
-          <CodePane
-            lang="javascript"
-            source={require("raw-loader!../assets/code/redux-thunk1_1.example")}
-            textSize={15}
-          />
-          <Text margin="40px 30px 20px" textSize={24} textAlign="left">
-            To execute the login sequence we dispatch our thunk:
-          </Text>
-          <CodePane
-            lang="javascript"
-            source={require("raw-loader!../assets/code/redux-thunk1_2.example")}
-            textSize={15}
-          />
-        </Slide>
+        <CodeSlide
+          bgColor="#2d2d2d"
+          textSize={20}
+          transition={[]}
+          lang="js"
+          code={require("raw-loader!../assets/code/redux-thunk.1.example")}
+          ranges={[
+            { loc: [0, 0], title: "Thunks" },
+            { loc: [0, 14] },
+            {
+              loc: [15, 16],
+              note: "To execute the login sequence we dispatch our thunk:"
+            }
+          ]}
+        />
 
         <Slide transition={["fade"]} bgColor="tertiary">
           <Heading size={6} textColor="primary" caps>
@@ -330,17 +328,18 @@ export default class Presentation extends React.Component {
           </Text>
         </Slide>
 
-        <Slide transition={["fade"]} bgColor="tertiary">
-          <Heading size={6} textColor="secondary">
-            Syntax
-          </Heading>
-          <br />
-          <CodePane
-            lang="javascript"
-            source={require("raw-loader!../assets/code/generators1.example")}
-            textSize={15}
-          />
-        </Slide>
+        <CodeSlide
+          bgColor="#2d2d2d"
+          textSize={20}
+          transition={[]}
+          lang="js"
+          code={require("raw-loader!../assets/code/generators1.example")}
+          ranges={[
+            { loc: [0, 6], title: "Syntax" },
+            { loc: [7, 9] },
+            { loc: [10, 15] }
+          ]}
+        />
 
         <Slide transition={["fade"]} bgColor="tertiary">
           <Heading size={6} textColor="secondary">
@@ -433,143 +432,47 @@ export default class Presentation extends React.Component {
           </Text>
         </Slide>
 
-        <Slide transition={["fade"]} bgColor="tertiary">
-          <Heading size={6} textColor="secondary">
-            Call
-          </Heading>
-          <Text textSize={22} textColor="secondary" margin="20px 30px 10px">
-            Creates an Effect description that instructs the middleware to call
-            the function fn with args as arguments
-          </Text>
-          <CodePane
-            lang="javascript"
-            source={require("raw-loader!../assets/code/redux-saga2_1.example")}
-            textSize={15}
-          />
-          <br />
-          <br />
-          <Heading size={6} textColor="secondary">
-            Put
-          </Heading>
-          <Text textSize={22} textColor="secondary" margin="20px 30px 10px">
-            Creates an Effect description that instructs the middleware to
-            dispatch an action to the Store
-          </Text>
-          <CodePane
-            lang="javascript"
-            source={require("raw-loader!../assets/code/redux-saga2_2.example")}
-            textSize={15}
-          />
-        </Slide>
-
-        <Slide transition={["fade"]} bgColor="tertiary">
-          <Heading size={6} textColor="secondary">
-            TakeLatest
-          </Heading>
-          <Text
-            textSize={22}
-            textColor="secondary"
-            margin="20px 30px 0"
-            textAlign="left"
-          >
-            Each time an action which matches pattern is dispatched to the
-            store, takeLatest starts a new saga task in the background.
-          </Text>
-          <Text
-            textSize={22}
-            textColor="secondary"
-            margin="10px 30px 10px"
-            textAlign="left"
-          >
-            If a saga task was started previously, and if this task is still
-            running, the task will be cancelled
-          </Text>
-          <CodePane
-            lang="javascript"
-            source={require("raw-loader!../assets/code/redux-saga3_1.example")}
-            textSize={15}
-          />
-          <br />
-          <Heading size={6} textColor="secondary">
-            Take
-          </Heading>
-          <Text
-            textSize={22}
-            textColor="secondary"
-            margin="20px 30px 0"
-            textAlign="left"
-          >
-            Creates an Effect description that instructs the middleware to wait
-            for a specified action on the Store.
-          </Text>
-          <Text
-            textSize={22}
-            textColor="secondary"
-            margin="10px 30px 10px"
-            textAlign="left"
-          >
-            The Generator is suspended until an action that matches pattern is
-            dispatched.
-          </Text>
-          <CodePane
-            lang="javascript"
-            source={require("raw-loader!../assets/code/redux-saga3_2.example")}
-            textSize={15}
-          />
-        </Slide>
-
-        <Slide transition={["fade"]} bgColor="tertiary">
-          <Heading size={6} textColor="secondary">
-            Fork
-          </Heading>
-          <Text textSize={22} textColor="secondary" margin="20px 30px 10px">
-            Creates an Effect description that instructs the middleware to
-            perform a non-blocking call on fn
-          </Text>
-          <CodePane
-            lang="javascript"
-            source={require("raw-loader!../assets/code/redux-saga4_1.example")}
-            textSize={15}
-          />
-          <br />
-          <Heading size={6} textColor="secondary">
-            Select
-          </Heading>
-          <Text textSize={22} textColor="secondary" margin="20px 30px 10px">
-            Creates an effect that instructs the middleware to invoke the
-            provided selector on the current Store's state (i.e. returns the
-            result of selector(getState(), ...args))
-          </Text>
-          <CodePane
-            lang="javascript"
-            source={require("raw-loader!../assets/code/redux-saga4_2.example")}
-            textSize={15}
-          />
-        </Slide>
-
-        <Slide transition={["fade"]} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
-            Saga
-          </Heading>
-          <br />
-          <CodePane
-            lang="javascript"
-            source={require("raw-loader!../assets/code/redux-saga1_1.example")}
-            textSize={15}
-          />
-          <Text margin="40px 30px 20px" textSize={24} textAlign="left">
-            To run our code, we just need to register the saga with the
-            middleware :
-          </Text>
-          <CodePane
-            lang="javascript"
-            source={require("raw-loader!../assets/code/redux-saga1_2.example")}
-            textSize={15}
-          />
-        </Slide>
-
         <CodeSlide
-          bgColor="red"
+          bgColor="#2d2d2d"
+          textSize={20}
+          transition={[]}
+          lang="js"
+          code={require("raw-loader!../assets/code/redux-saga2.example")}
+          ranges={[
+            {
+              loc: [0, 5],
+              note:
+                "Creates an Effect description that instructs the middleware to call the function fn with args as arguments"
+            },
+            {
+              loc: [6, 12],
+              note:
+                "Creates an Effect description that instructs the middleware to dispatch an action to the Store"
+            }
+          ]}
+        />
+        <CodeSlide
+          bgColor="#2d2d2d"
+          textSize={20}
+          transition={[]}
+          lang="js"
+          code={require("raw-loader!../assets/code/redux-saga3.example")}
+          ranges={[
+            {
+              loc: [0, 4],
+              note: `Each time an action which matches pattern is dispatched to the store, takeLatest starts a 
+              new saga task in the background. If a saga task was started previously, and if this task is still running, 
+              the task will be cancelled`
+            },
+            {
+              loc: [5, 14],
+              note: `Creates an Effect description that instructs the middleware to wait for a specified 
+              action on the Store. The Generator is suspended until an action that matches pattern is dispatched.`
+            }
+          ]}
+        />
+        <CodeSlide
+          bgColor="#2d2d2d"
           textSize={20}
           transition={[]}
           lang="js"
@@ -577,7 +480,8 @@ export default class Presentation extends React.Component {
           ranges={[
             {
               loc: [0, 12],
-              note: `Creates an Effect description that instructs the middleware to perform a non-blocking call on fn`
+              note:
+                "Creates an Effect description that instructs the middleware to perform a non-blocking call on fn"
             },
             {
               loc: [13, 21],
