@@ -1,6 +1,6 @@
 console.log(store.getState())
 
-/* Prints
+// Prints
 {
   visibilityFilter: 'SHOW_ALL',
   todos: [
@@ -14,4 +14,3 @@ console.log(store.getState())
     }
   ]
 }
-*/
