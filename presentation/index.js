@@ -491,6 +491,15 @@ export default class Presentation extends React.Component {
           ]}
         />
 
+        <CodeSlide
+          bgColor="#2d2d2d"
+          textSize={20}
+          transition={[]}
+          lang="js"
+          code={require("raw-loader!../assets/code/redux-saga5.example")}
+          ranges={[{ loc: [0, 0], title: "All in one" }, { loc: [0, 1] }]}
+        />
+
         <Slide transition={["fade"]} bgColor="tertiary">
           <Heading size={6} textColor="primary" caps>
             Benefits
@@ -525,6 +534,28 @@ export default class Presentation extends React.Component {
           </Text>
           <br />
         </Slide>
+
+        <CodeSlide
+          bgColor="#2d2d2d"
+          textSize={20}
+          transition={[]}
+          lang="js"
+          code={require("raw-loader!../assets/code/redux-saga4.example")}
+          ranges={[
+            { loc: [0, 0], title: "Testing" },
+            { loc: [0, 1] },
+            {
+              loc: [0, 12],
+              note:
+                "Creates an Effect description that instructs the middleware to perform a non-blocking call on fn"
+            },
+            {
+              loc: [13, 21],
+              note: `Creates an effect that instructs the middleware to invoke the provided selector on the current 
+              Store's state (i.e. returns the result of selector(getState(), ...args))`
+            }
+          ]}
+        />
       </Deck>
     );
   }

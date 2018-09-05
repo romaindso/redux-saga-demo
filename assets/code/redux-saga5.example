@@ -1,0 +1,32 @@
+// TakeLatest
+
+function* fetchProducts() {
+  const token = yield select(getToken);
+  const const { response, error }  = yield call(Api.fetch, '/products')
+  // create and yield a dispatch Effect
+  yield put({ type: 'PRODUCTS_RECEIVED', products })
+  if (!error) {
+    yield put(productsActions.requestSuccess(response));
+  } else {
+    yield call(displayErrorMessage, error);
+  }
+}
+
+export function* fetchProducts(param) {
+  const token = yield select(getToken);
+  const { data: offerId } = param;
+  const { response, error } = yield call(
+    productsService.getProducts,
+    token,
+    offerId
+  );
+  if (!error) {
+    yield put(productsActions.requestSuccess(response));
+  } else {
+    yield call(displayErrorMessage, error);
+  }
+}
+
+export default function* watchFetchProducts() {
+  yield takeLatest('PRODUCTS_REQUESTED', fetchProducts);
+}
