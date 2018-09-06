@@ -1,32 +1,39 @@
-// TakeLatest
+// src/index.js
+import createSagaMiddleware from 'redux-saga'
+import rootSaga from './sagas';
+
+const sagaMiddleware = createSagaMiddleware();
+sagaMiddleware.run(rootSaga);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  root
+);
+
+// src/sagas/index.js
+export default function* rootSaga() {
+  // Watchers
+  yield all([
+    fork(watchFetchProducts),
+    fork(watchFecthOrders),
+    fork(watchI18n),
+    ...
+  ])
+}
+
+// src/sagas/products
+export default function* watchFetchProducts() {
+  yield takeLatest('PRODUCTS_REQUESTED', fetchProducts);
+}
 
 function* fetchProducts() {
   const token = yield select(getToken);
-  const const { response, error }  = yield call(Api.fetch, '/products')
-  // create and yield a dispatch Effect
-  yield put({ type: 'PRODUCTS_RECEIVED', products })
+  const const { response, error }  = yield call(Api.fetch, '/products', token)
   if (!error) {
-    yield put(productsActions.requestSuccess(response));
+    yield put({ type: 'PRODUCTS_REQUESTED_SUCCESS', response.data.products })
   } else {
-    yield call(displayErrorMessage, error);
+    yield put({ type: 'PRODUCTS_REQUESTED_FAILURE', error })
   }
-}
-
-export function* fetchProducts(param) {
-  const token = yield select(getToken);
-  const { data: offerId } = param;
-  const { response, error } = yield call(
-    productsService.getProducts,
-    token,
-    offerId
-  );
-  if (!error) {
-    yield put(productsActions.requestSuccess(response));
-  } else {
-    yield call(displayErrorMessage, error);
-  }
-}
-
-export default function* watchFetchProducts() {
-  yield takeLatest('PRODUCTS_REQUESTED', fetchProducts);
 }

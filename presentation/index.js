@@ -9,6 +9,7 @@ import {
   CodePane,
   Deck,
   Heading,
+  Image,
   ListItem,
   List,
   Quote,
@@ -16,6 +17,14 @@ import {
   Slide,
   Text
 } from "spectacle";
+
+import preloader from "spectacle/lib/utils/preloader";
+
+const images = {
+  reduxsaga: require("../assets/images/redux-saga.jpg")
+};
+
+preloader(images);
 
 // Import theme
 import createTheme from "spectacle/lib/themes/default";
@@ -28,7 +37,7 @@ const theme = createTheme(
   {
     primary: "white",
     secondary: "#1F2022",
-    tertiary: "#03A9FC",
+    tertiary: "#eb643b",
     quaternary: "#CECECE"
   },
   {
@@ -57,19 +66,6 @@ export default class Presentation extends React.Component {
 
         <Slide transition={["fade"]} bgColor="tertiary">
           <Heading size={4} textColor="primary" caps>
-            Summary
-          </Heading>
-          <Text margin="40px 0 0" textSize={45} textAlign="center">
-            Core Concepts
-          </Text>
-          <br />
-          <Text textSize={45} textAlign="center">
-            Side Effects
-          </Text>
-        </Slide>
-
-        <Slide transition={["fade"]} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
             Why ?
           </Heading>
           <Heading size={3} textColor="secondary">
@@ -106,10 +102,10 @@ export default class Presentation extends React.Component {
             Single source of truth
           </Heading>
           <br />
-          <Text textSize={25}>
+          <Heading size={5}>
             The state of your whole application is stored in an object tree
-            within a single store.
-          </Text>
+            within a single store
+          </Heading>
           <br />
           <CodePane
             lang="javascript"
@@ -123,10 +119,10 @@ export default class Presentation extends React.Component {
             State is read-only
           </Heading>
           <br />
-          <Text textSize={25}>
+          <Heading size={5}>
             The only way to change the state is to emit an action, an object
-            describing what happened.
-          </Text>
+            describing what happened
+          </Heading>
           <br />
           <CodePane
             lang="javascript"
@@ -140,10 +136,10 @@ export default class Presentation extends React.Component {
             Changes are made with pure functions
           </Heading>
           <br />
-          <Text fit>
+          <Heading size={5}>
             To specify how the state tree is transformed by actions, you write
-            pure reducers.
-          </Text>
+            pure reducers
+          </Heading>
         </Slide>
 
         <CodeSlide
@@ -170,18 +166,9 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={["fade"]} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
+          <Heading size={4} textColor="primary" caps>
             Managing Side Effects
           </Heading>
-          <Text margin="70px 0 0" textSize={25} textAlign="left">
-            There's a lot of ways to write and manage asynchronous logic in
-            Javascript.
-          </Text>
-          <br />
-          <Text textSize={25} textAlign="left">
-            There's no needs middlewares to use async logic in a Redux app, but
-            it's the recommended approach.
-          </Text>
           <br />
           <List Fill>
             <ListItem>functions (redux-thunk)</ListItem>
@@ -193,7 +180,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={["fade"]} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
+          <Heading size={4} textColor="primary" caps>
             Redux-Thunk
           </Heading>
           <Text margin="70px 0 0 110px" textSize={25} textAlign="left">
@@ -228,24 +215,22 @@ export default class Presentation extends React.Component {
         />
 
         <Slide transition={["fade"]} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
+          <Heading size={4} textColor="primary" caps>
             Benefits
           </Heading>
-          <List>
-            <ListItem margin="70px 0 0 180px" textSize={25} textAlign="left">
-              Simple in both concept and implementation
-            </ListItem>
-            <ListItem margin="40px 0 0 180px" textSize={25} textAlign="left">
-              Uses familiar flow control constructs
-            </ListItem>
-            <ListItem margin="40px 0 0 180px" textSize={25} textAlign="left">
-              Logic is all in one place
-            </ListItem>
-          </List>
+          <Heading size={6} lineHeight={2} fit>
+            Simple in both concept and implementation
+          </Heading>
+          <Heading size={6} lineHeight={2}>
+            Uses familiar flow control constructs
+          </Heading>
+          <Heading size={6} lineHeight={2}>
+            Logic is all in one place
+          </Heading>
         </Slide>
 
         <Slide transition={["fade"]} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
+          <Heading size={4} textColor="primary" caps>
             The problem with this approach
           </Heading>
           <Text margin="40px 0 0" textSize={25} textAlign="left">
@@ -270,16 +255,33 @@ export default class Presentation extends React.Component {
           <Heading size={4} textColor="primary" caps>
             Redux-Saga
           </Heading>
-          <Text margin="70px 0 0" textSize={25} textAlign="left">
-            • Use of ES6 generator functions to control async flow
+          <Text margin="70px 0 0" textSize={35} textAlign="left">
+            Use of ES6 generator functions to control async flow
           </Text>
           <br />
-          <Text textSize={25} textAlign="left">
-            • Enables complex async workflows via background-thread-like "saga"
+          <Text textSize={35} textAlign="left">
+            Enables complex async workflows via background-thread-like "saga"
             functions.
           </Text>
           <br />
         </Slide>
+
+        <CodeSlide
+          bgColor="#2d2d2d"
+          textSize={20}
+          transition={[]}
+          lang="js"
+          code={require("raw-loader!../assets/code/redux-saga1.example")}
+          ranges={[
+            { loc: [0, 0], title: "Saga" },
+            { loc: [0, 19] },
+            {
+              loc: [20, 21],
+              note:
+                "To run our code, we just need to register the saga with the middleware"
+            }
+          ]}
+        />
 
         <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
           <BlockQuote>
@@ -299,8 +301,18 @@ export default class Presentation extends React.Component {
           </BlockQuote>
         </Slide>
 
+        <Slide bgColor="#1f2022">
+          <Image
+            src={images.reduxsaga.replace("/", "")}
+            margin="0px auto 40px"
+          />
+          <Heading size={2} caps fit textColor="primary" textFont="primary">
+            Redux Saga
+          </Heading>
+        </Slide>
+
         <Slide transition={["fade"]} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
+          <Heading size={4} textColor="primary" caps>
             Built on top of Generators
           </Heading>
           <Text margin="40px 0 0" textSize={25} textAlign="left">
@@ -406,8 +418,8 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={["fade"]} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
-            redux-saga/effects
+          <Heading size={4} textColor="primary" caps>
+            Effects
           </Heading>
           <Text margin="40px 0 0" textSize={25} textAlign="left">
             To express the Saga logic we yield plain JavaScript Objects from the
@@ -497,31 +509,46 @@ export default class Presentation extends React.Component {
           transition={[]}
           lang="js"
           code={require("raw-loader!../assets/code/redux-saga5.example")}
-          ranges={[{ loc: [0, 0], title: "All in one" }, { loc: [0, 1] }]}
+          ranges={[
+            { loc: [0, 0], title: "All in one" },
+            {
+              loc: [0, 13],
+              note: "Create the saga middleware and then run the saga"
+            },
+            {
+              loc: [14, 24],
+              note: "Start all our watchers"
+            },
+            {
+              loc: [25, 29],
+              note: "Listen to a specific redux action and delagate to a saga"
+            },
+            {
+              loc: [25, 39]
+            }
+          ]}
         />
 
         <Slide transition={["fade"]} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
+          <Heading size={4} textColor="primary" caps>
             Benefits
           </Heading>
-          <List margin="10px 0 0 230px">
-            <ListItem margin="40px 0 0 0" textSize={25} textAlign="left">
-              Easy to understand, easy to test
-            </ListItem>
-            <ListItem margin="40px 0 0 0" textSize={25} textAlign="left">
-              Excellent documentation
-            </ListItem>
-            <ListItem margin="40px 0 0 0" textSize={25} textAlign="left">
-              Logic is all in one place
-            </ListItem>
-            <ListItem margin="40px 0 0 0" textSize={25} textAlign="left">
-              Supports very complex operations
-            </ListItem>
-          </List>
+          <Heading size={6} lineHeight={2}>
+            Easy to understand, easy to test
+          </Heading>
+          <Heading size={6} lineHeight={2}>
+            Excellent documentation
+          </Heading>
+          <Heading size={6} lineHeight={2}>
+            Logic is all in one place
+          </Heading>
+          <Heading size={6} lineHeight={2}>
+            Supports very complex operations
+          </Heading>
         </Slide>
 
         <Slide transition={["fade"]} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
+          <Heading size={4} textColor="primary" caps>
             The problem with this approach
           </Heading>
           <Text margin="40px 0 0" textSize={25} textAlign="left">
@@ -543,11 +570,9 @@ export default class Presentation extends React.Component {
           code={require("raw-loader!../assets/code/redux-saga4.example")}
           ranges={[
             { loc: [0, 0], title: "Testing" },
-            { loc: [0, 1] },
             {
               loc: [0, 12],
-              note:
-                "Creates an Effect description that instructs the middleware to perform a non-blocking call on fn"
+              note: "Subscr"
             },
             {
               loc: [13, 21],
