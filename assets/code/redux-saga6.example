@@ -1,0 +1,26 @@
+function* fetchProducts() {
+  const token = yield select(getToken);
+  const const { response, error }  = yield call(Api.fetch, '/products', token)
+  if (!error) {
+    yield put({ type: 'PRODUCTS_REQUESTED_SUCCESS', response.data })
+  } else {
+    yield put({ type: 'PRODUCTS_REQUESTED_FAILURE', error })
+  }
+}
+
+describe('fetchProducts', () => {
+  test('should get products with success', () => {
+    const tokenMock = 'token';
+    const responseMock = { response: { data: [] }};
+
+    const generator = fetchProducts();
+
+    expect(generator.next().value).toEqual(select(getToken));
+    expect(generator.next(tokenMock).value).toEqual(
+      call(Api.fetch, '/products', tokenMock)
+    );
+    expect(generator.next(responseMock).value).toEqual(
+      put({ type: 'PRODUCTS_REQUESTED_SUCCESS', responseMock.data })
+    );
+  });
+});

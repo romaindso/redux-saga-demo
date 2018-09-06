@@ -4,6 +4,7 @@ import CodeSlide from "spectacle-code-slide";
 
 // Import Spectacle Core tags
 import {
+  Appear,
   BlockQuote,
   Cite,
   CodePane,
@@ -21,7 +22,8 @@ import {
 import preloader from "spectacle/lib/utils/preloader";
 
 const images = {
-  reduxsaga: require("../assets/images/redux-saga.jpg")
+  reduxsaga: require("../assets/images/redux-saga.jpg"),
+  montreal: require("../assets/images/montreal.jpg")
 };
 
 preloader(images);
@@ -62,6 +64,28 @@ export default class Presentation extends React.Component {
           <Text margin="10px 0 0" textColor="tertiary" size={1} fit bold italic>
             "générateur de bonheur"
           </Text>
+        </Slide>
+
+        <Slide
+          transition={["slide"]}
+          bgImage={images.montreal.replace("/", "")}
+          bgDarken={0.75}
+        >
+          <Appear fid="1">
+            <Heading size={1} caps fit textColor="primary">
+              Lego addict
+            </Heading>
+          </Appear>
+          <Appear fid="2">
+            <Heading size={1} caps fit textColor="tertiary">
+              TechLead frontend @Lectra
+            </Heading>
+          </Appear>
+          <Appear fid="3">
+            <Heading size={1} caps fit textColor="primary">
+              Moving to Montréal soon ❤️
+            </Heading>
+          </Appear>
         </Slide>
 
         <Slide transition={["fade"]} bgColor="tertiary">
@@ -183,18 +207,23 @@ export default class Presentation extends React.Component {
           <Heading size={4} textColor="primary" caps>
             Redux-Thunk
           </Heading>
-          <Text margin="70px 0 0 110px" textSize={25} textAlign="left">
-            • Action creators can return a function instead of an action
+          <br />
+          <Text textSize={35}>
+            <S type="bold">
+              Action creators can return a function instead of an action
+            </S>
           </Text>
           <br />
-          <Text margin="0 0 0 110px" textSize={25} textAlign="left">
-            • Can be used to delay the dispatch of an action
+          <Text textSize={35}>
+            <S type="bold">Can be used to delay the dispatch of an action</S>
           </Text>
           <br />
-          <Text margin="0 0 0 110px" textSize={25} textAlign="left">
-            • The inner function receives the store methods{" "}
-            <S type="italic">dispatch</S> and <S type="italic">getState</S> as
-            parameters
+          <Text textSize={35}>
+            <S type="bold">
+              The inner function receives the store methods{" "}
+              <S type="italic">dispatch</S> and <S type="italic">getState</S> as
+              parameters
+            </S>
           </Text>
         </Slide>
 
@@ -218,6 +247,7 @@ export default class Presentation extends React.Component {
           <Heading size={4} textColor="primary" caps>
             Benefits
           </Heading>
+          <br />
           <Heading size={6} lineHeight={2} fit>
             Simple in both concept and implementation
           </Heading>
@@ -231,23 +261,28 @@ export default class Presentation extends React.Component {
 
         <Slide transition={["fade"]} bgColor="tertiary">
           <Heading size={4} textColor="primary" caps>
-            The problem with this approach
+            Limitations
           </Heading>
-          <Text margin="40px 0 0" textSize={25} textAlign="left">
-            • No longer dispatching plain action objects
+          <br />
+          <Text textSize={35}>
+            <S type="bold">No longer dispatching plain action objects</S>
           </Text>
           <br />
-          <Text textSize={25} textAlign="left">
-            • Thunks are harder to test
+          <Text textSize={35}>
+            <S type="bold">Thunks are harder to test</S>
           </Text>
           <br />
-          <Text textSize={25} textAlign="left">
-            • Mixing actions and side effects in asynchronous action creators
-            drastically increases complexity
+          <Text textSize={35}>
+            <S type="bold">
+              Mixing actions and side effects in asynchronous action creators
+              drastically increases complexity
+            </S>
           </Text>
           <br />
-          <Text textSize={25} textAlign="left">
-            • There is no clean/easy/etc way to cancel an in-progress thunk
+          <Text textSize={35}>
+            <S type="bold">
+              There is no clean/easy way to cancel an in-progress thunk
+            </S>
           </Text>
         </Slide>
 
@@ -255,15 +290,18 @@ export default class Presentation extends React.Component {
           <Heading size={4} textColor="primary" caps>
             Redux-Saga
           </Heading>
-          <Text margin="70px 0 0" textSize={35} textAlign="left">
-            Use of ES6 generator functions to control async flow
+          <Text margin="70px 0 0" textSize={35} fit>
+            <S type="bold">
+              Use of ES6 generator functions to control async flow
+            </S>
           </Text>
           <br />
-          <Text textSize={35} textAlign="left">
-            Enables complex async workflows via background-thread-like "saga"
-            functions.
+          <Text textSize={35}>
+            <S type="bold">
+              Enables complex async workflows via background-thread-like "saga"
+              functions
+            </S>
           </Text>
-          <br />
         </Slide>
 
         <CodeSlide
@@ -306,8 +344,8 @@ export default class Presentation extends React.Component {
             src={images.reduxsaga.replace("/", "")}
             margin="0px auto 40px"
           />
-          <Heading size={2} caps fit textColor="primary" textFont="primary">
-            Redux Saga
+          <Heading size={4} caps fit textColor="primary" textFont="primary">
+            WorkFlow
           </Heading>
         </Slide>
 
@@ -533,6 +571,7 @@ export default class Presentation extends React.Component {
           <Heading size={4} textColor="primary" caps>
             Benefits
           </Heading>
+          <br />
           <Heading size={6} lineHeight={2}>
             Easy to understand, easy to test
           </Heading>
@@ -549,17 +588,16 @@ export default class Presentation extends React.Component {
 
         <Slide transition={["fade"]} bgColor="tertiary">
           <Heading size={4} textColor="primary" caps>
-            The problem with this approach
+            Limitations
           </Heading>
-          <Text margin="40px 0 0" textSize={25} textAlign="left">
-            • Unit testing requires intimate knowledge of the implementation of
-            the saga
-          </Text>
           <br />
-          <Text textSize={25} textAlign="left">
-            • Debugging is difficult
-          </Text>
-          <br />
+          <Heading size={6} lineHeight={1}>
+            Unit testing requires full knowledge of the implementation of the
+            saga
+          </Heading>
+          <Heading size={6} lineHeight={2}>
+            Debugging is difficult
+          </Heading>
         </Slide>
 
         <CodeSlide
@@ -567,20 +605,26 @@ export default class Presentation extends React.Component {
           textSize={20}
           transition={[]}
           lang="js"
-          code={require("raw-loader!../assets/code/redux-saga4.example")}
+          code={require("raw-loader!../assets/code/redux-saga6.example")}
           ranges={[
             { loc: [0, 0], title: "Testing" },
             {
-              loc: [0, 12],
-              note: "Subscr"
+              loc: [0, 9]
             },
             {
-              loc: [13, 21],
-              note: `Creates an effect that instructs the middleware to invoke the provided selector on the current 
-              Store's state (i.e. returns the result of selector(getState(), ...args))`
+              loc: [10, 26]
             }
           ]}
         />
+
+        <Slide transition={["fade"]} bgColor="tertiary">
+          <Heading size={4} textColor="primary" caps>
+            Redux Saga Test Plan
+          </Heading>
+          <br />
+
+          <Heading size={6} lineHeight={2} />
+        </Slide>
       </Deck>
     );
   }
