@@ -13,14 +13,15 @@ describe('fetchProducts', () => {
     const tokenMock = 'token';
     const responseMock = { response: { data: [] }};
 
-    const generator = fetchProducts();
-
-    expect(generator.next().value).toEqual(select(getToken));
-    expect(generator.next(tokenMock).value).toEqual(
-      call(Api.fetch, '/products', tokenMock)
-    );
-    expect(generator.next(responseMock).value).toEqual(
-      put({ type: 'PRODUCTS_REQUESTED_SUCCESS', data: responseMock.data })
-    );
+    return expectSaga(fetchProducts)
+      .provide([
+        [call(Api.fetch, '/products', token), responseMock]
+      ])
+      .put({
+        type: 'PRODUCTS_REQUESTED_SUCCESS',
+        data: responseMock.response.data
+      })
+      .dispatch({ type: 'PRODUCTS_REQUESTED' })
+      .run();
   });
 });

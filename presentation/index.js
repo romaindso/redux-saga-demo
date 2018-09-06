@@ -623,7 +623,46 @@ export default class Presentation extends React.Component {
           </Heading>
           <br />
 
-          <Heading size={6} lineHeight={2} />
+          <Heading size={6} lineHeight={2}>
+            Allow to test only a specific effect
+          </Heading>
+          <Heading size={6} lineHeight={2}>
+            Saga effects order doesn't matter
+          </Heading>
+        </Slide>
+
+        <CodeSlide
+          bgColor="#2d2d2d"
+          textSize={20}
+          transition={[]}
+          lang="js"
+          code={require("raw-loader!../assets/code/redux-saga7.example")}
+          ranges={[
+            { loc: [0, 0], title: "Testing with redux-saga-test-plan" },
+            {
+              loc: [0, 9]
+            },
+            {
+              loc: [10, 27]
+            }
+          ]}
+        />
+
+        <Slide
+          transition={["slide"]}
+          bgImage={images.montreal.replace("/", "")}
+          bgDarken={0.75}
+        >
+          <Appear fid="1">
+            <Heading size={1} caps fit textColor="primary">
+              Merci !
+            </Heading>
+          </Appear>
+          <Appear fid="2">
+            <Heading size={1} caps fit textColor="tertiary">
+              @romaindso
+            </Heading>
+          </Appear>
         </Slide>
       </Deck>
     );
