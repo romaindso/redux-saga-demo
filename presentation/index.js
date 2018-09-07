@@ -23,7 +23,8 @@ import preloader from "spectacle/lib/utils/preloader";
 
 const images = {
   reduxsaga: require("../assets/images/redux-saga.jpg"),
-  montreal: require("../assets/images/montreal.jpg")
+  montreal: require("../assets/images/montreal.jpg"),
+  orchestre: require("../assets/images/orchestre.jpg")
 };
 
 preloader(images);
@@ -353,29 +354,48 @@ export default class Presentation extends React.Component {
           <Heading size={4} textColor="primary" caps>
             Built on top of Generators
           </Heading>
-          <Text margin="40px 0 0" textSize={25} textAlign="left">
-            • Generators may be paused in the middle, one or many times, and
-            resumed later, allowing other code to run during these paused
-            periods
-          </Text>
+          <Appear fid="1">
+            <Text margin="40px 0 0" textSize={30}>
+              <S type="bold">
+                Generators may be paused in the middle, one or many times, and
+                resumed later, allowing other code to run during these paused
+                periods
+              </S>
+            </Text>
+          </Appear>
+
           <br />
-          <Text textSize={25} textAlign="left">
-            • Nothing can pause a generator from the outside; it pauses itself
-            when it comes across a <S type="italic">yield</S>
-          </Text>
+          <Appear fid="2">
+            <Text textSize={30}>
+              <S type="bold">
+                Nothing can pause a generator from the outside; it pauses itself
+                when it comes across a <S type="italic">yield</S>
+              </S>
+            </Text>
+          </Appear>
+
           <br />
-          <Text textSize={25} textAlign="left">
-            • Once a generator has <S type="italic">yield</S>
-            -paused itself, it cannot resume on its own. An external control
-            must be used to restart the generator
-          </Text>
+          <Appear fid="3">
+            <Text textSize={30}>
+              <S type="bold">
+                Once a generator has <S type="italic">yield</S>
+                -paused itself, it cannot resume on its own. An external control
+                must be used to restart the generator
+              </S>
+            </Text>
+          </Appear>
+
           <br />
-          <Text textSize={25} textAlign="left">
-            • Enables 2-way message passing into and out of the generator, as it
-            progresses. You send messages out with each{" "}
-            <S type="italic">yield</S>, and you send messages back in with each
-            restart.
-          </Text>
+          <Appear fid="4">
+            <Text textSize={30}>
+              <S type="bold">
+                Enables 2-way message passing into and out of the generator, as
+                it progresses. You send messages out with each{" "}
+                <S type="italic">yield</S>, and you send messages back in with
+                each restart.
+              </S>
+            </Text>
+          </Appear>
         </Slide>
 
         <CodeSlide
@@ -395,27 +415,58 @@ export default class Presentation extends React.Component {
           <Heading size={4} textColor="primary" caps>
             Effects
           </Heading>
-          <Text margin="40px 0 0" textSize={25} textAlign="left">
-            To express the Saga logic we yield plain JavaScript Objects from the
-            Generator. We call those objects <S type="italic">Effects</S>.
-          </Text>
+          <Appear fid="1">
+            <Text margin="40px 0 0" textSize={30}>
+              <S type="bold">
+                To express the Saga logic we yield plain JavaScript Objects from
+                the Generator
+              </S>
+            </Text>
+          </Appear>
           <br />
-          <Text textSize={25} textAlign="left">
-            An <S type="italic">Effects</S> is simply an object which contains
-            some information to be interpreted by the middleware.
-          </Text>
+          <Appear fid="2">
+            <Text textSize={30}>
+              <S type="bold">
+                An <S type="italic">Effect</S> is simply an object which
+                contains some information to be interpreted by the middleware
+              </S>
+            </Text>
+          </Appear>
           <br />
-          <Text textSize={25} textAlign="left">
-            You can view <S type="italic">Effects</S> like instructions to the
-            middleware to perform some operation (invoke some asynchronous
-            function, dispatch an action to the store).
-          </Text>
+          <Appear fid="3">
+            <Text textSize={30}>
+              <S type="bold">
+                <S type="italic">Effects</S> are like instructions to the
+                middleware to perform some operation
+              </S>
+            </Text>
+          </Appear>
           <br />
-          <Text textSize={25} textAlign="left">
-            This way, when testing the Generator, all we need to do is to check
-            that it yields the expected instruction by doing a simple deepEqual
-            on the yielded Object.
-          </Text>
+          <Appear fid="4">
+            <Text textSize={30}>
+              <S type="bold">
+                Testing the Generator is a simple check that it yields the
+                expected instruction (deepEqual on the yielded Object)
+              </S>
+            </Text>
+          </Appear>
+        </Slide>
+
+        <Slide
+          transition={["slide"]}
+          bgImage={images.orchestre.replace("/", "")}
+          bgDarken={0.55}
+        >
+          <Appear fid="1">
+            <Heading size={1} caps fit textColor="primary">
+              Orchestrator
+            </Heading>
+          </Appear>
+          <Appear fid="2">
+            <Heading size={1} caps fit textColor="tertiary">
+              Effects
+            </Heading>
+          </Appear>
         </Slide>
 
         <CodeSlide
@@ -437,6 +488,7 @@ export default class Presentation extends React.Component {
             }
           ]}
         />
+
         <CodeSlide
           bgColor="#2d2d2d"
           textSize={20}
@@ -457,6 +509,7 @@ export default class Presentation extends React.Component {
             }
           ]}
         />
+
         <CodeSlide
           bgColor="#2d2d2d"
           textSize={20}
@@ -472,7 +525,7 @@ export default class Presentation extends React.Component {
             {
               loc: [13, 21],
               note: `Creates an effect that instructs the middleware to invoke the provided selector on the current 
-              Store's state (i.e. returns the result of selector(getState(), ...args))`
+              Store's state`
             }
           ]}
         />
