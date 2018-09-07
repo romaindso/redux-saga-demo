@@ -15,7 +15,7 @@ describe('fetchProducts', () => {
 
     return expectSaga(fetchProducts)
       .provide([
-        [call(Api.fetch, '/products', token), responseMock]
+        [select(getToken), tokenMock]
       ])
       .put({
         type: 'PRODUCTS_REQUESTED_SUCCESS',

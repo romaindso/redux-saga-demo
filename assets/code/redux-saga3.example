@@ -1,6 +1,6 @@
 // TakeLatest
 function* watchFetchProducts() {
-  yield takeEvery('PRODUCTS_REQUESTED', fetchProducts)
+  yield takeLatest('PRODUCTS_REQUESTED', fetchProducts)
 }
 
 // Take
