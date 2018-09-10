@@ -401,7 +401,7 @@ export default class Presentation extends React.Component {
                 Enables 2-way message passing into and out of the generator, as
                 it progresses. You send messages out with each{" "}
                 <S type="italic">yield</S>, and you send messages back in with
-                each restart.
+                each restart
               </S>
             </Text>
           </Appear>
@@ -419,6 +419,18 @@ export default class Presentation extends React.Component {
             { loc: [10, 15] }
           ]}
         />
+
+        <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+          <BlockQuote>
+            <Quote>
+              <Text textColor="primary" textSize={45}>
+                Event Sourcing ensures that all changes to application state are
+                stored as a sequence of events.
+              </Text>
+            </Quote>
+            <Cite>Martin Fowler</Cite>
+          </BlockQuote>
+        </Slide>
 
         <Slide transition={["fade"]} bgColor="tertiary">
           <Heading size={4} textColor="primary" caps>
@@ -467,14 +479,17 @@ export default class Presentation extends React.Component {
           bgDarken={0.55}
         >
           <Appear fid="1">
-            <Heading size={1} caps fit textColor="primary">
-              Orchestrator
-            </Heading>
-          </Appear>
-          <Appear fid="2">
-            <Heading size={1} caps fit textColor="tertiary">
-              Effects
-            </Heading>
+            <div>
+              <Heading size={1} caps fit textColor="primary">
+                Effects
+              </Heading>
+              <Heading size={1} caps fit textColor="tertiary">
+                Driven
+              </Heading>
+              <Heading size={1} caps fit textColor="primary">
+                Orchestrator
+              </Heading>
+            </div>
           </Appear>
         </Slide>
 
@@ -649,16 +664,14 @@ export default class Presentation extends React.Component {
         <Slide
           transition={["slide"]}
           bgImage={images.facepalm.replace("/", "")}
-          bgDarken={0.75}
+          bgDarken={0.55}
         >
-          <Appear fid="1">
-            <Heading size={1} caps fit textColor="primary">
-              Just use redux saga !
-            </Heading>
-          </Appear>
+          <Heading size={1} caps fit textColor="primary">
+            Just use redux saga !
+          </Heading>
           <Appear fid="2">
             <Heading size={1} caps fit textColor="tertiary">
-              nobody, never...
+              nobody, never.
             </Heading>
           </Appear>
         </Slide>
@@ -668,11 +681,9 @@ export default class Presentation extends React.Component {
           bgImage={images.montreal.replace("/", "")}
           bgDarken={0.75}
         >
-          <Appear fid="1">
-            <Heading size={1} caps fit textColor="primary">
-              Merci !
-            </Heading>
-          </Appear>
+          <Heading size={1} caps fit textColor="primary">
+            Merci !
+          </Heading>
           <Appear fid="2">
             <Heading size={1} caps fit textColor="tertiary">
               @romaindso
