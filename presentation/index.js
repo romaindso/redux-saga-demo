@@ -23,6 +23,7 @@ import preloader from "spectacle/lib/utils/preloader";
 
 const images = {
   reduxsaga: require("../assets/images/redux-saga.jpg"),
+  tweetredux: require("../assets/images/tweet-redux.jpg"),
   montreal: require("../assets/images/montreal.jpg"),
   orchestre: require("../assets/images/orchestre.jpg")
 };
@@ -115,6 +116,13 @@ export default class Presentation extends React.Component {
             </Quote>
             <Cite>Dan Abramov - co-creator of Redux</Cite>
           </BlockQuote>
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <Image
+            src={images.tweetredux.replace("/", "")}
+            margin="0px auto 40px"
+          />
         </Slide>
 
         <Slide transition={["fade"]} bgColor="tertiary" textColor="primary">
