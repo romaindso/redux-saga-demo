@@ -25,7 +25,8 @@ const images = {
   reduxsaga: require("../assets/images/redux-saga.jpg"),
   tweetredux: require("../assets/images/tweet-redux.jpg"),
   montreal: require("../assets/images/montreal.jpg"),
-  orchestre: require("../assets/images/orchestre.jpg")
+  orchestre: require("../assets/images/orchestre.jpg"),
+  facepalm: require("../assets/images/facepalm.jpg")
 };
 
 preloader(images);
@@ -644,6 +645,23 @@ export default class Presentation extends React.Component {
             }
           ]}
         />
+
+        <Slide
+          transition={["slide"]}
+          bgImage={images.facepalm.replace("/", "")}
+          bgDarken={0.75}
+        >
+          <Appear fid="1">
+            <Heading size={1} caps fit textColor="primary">
+              Just use redux saga !
+            </Heading>
+          </Appear>
+          <Appear fid="2">
+            <Heading size={1} caps fit textColor="tertiary">
+              nobody, never...
+            </Heading>
+          </Appear>
+        </Slide>
 
         <Slide
           transition={["slide"]}
