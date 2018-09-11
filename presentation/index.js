@@ -36,14 +36,34 @@ import createTheme from "spectacle/lib/themes/default";
 
 // Require CSS
 require("normalize.css");
-import "./index.css";
+// import "./theme-darken.css";
+import "./theme-lighten.css";
 
+/* THEME DARKEN */
+// const theme = createTheme(
+//   {
+//     primary: "white",
+//     secondary: "#1F2022",
+//     tertiary: "#eb643b",
+//     quaternary: "#2d2d2d",
+//     white: "white",
+//     orange: "#eb643b"
+//   },
+//   {
+//     primary: "Montserrat",
+//     secondary: "Helvetica"
+//   }
+// );
+
+/* THEME LIGHTHEN */
 const theme = createTheme(
   {
-    primary: "white",
+    primary: "#eb643b",
     secondary: "#1F2022",
-    tertiary: "#eb643b",
-    quaternary: "#CECECE"
+    tertiary: "white",
+    quaternary: "white",
+    white: "white",
+    orange: "#eb643b"
   },
   {
     primary: "Montserrat",
@@ -60,11 +80,18 @@ export default class Presentation extends React.Component {
         theme={theme}
         progress="none"
       >
-        <Slide transition={["zoom"]} bgColor="primary">
+        <Slide transition={["zoom"]} bgColor={theme.screen.colors.white}>
           <Heading size={1} fit caps lineHeight={1} textColor="secondary">
             Redux Saga
           </Heading>
-          <Text margin="10px 0 0" textColor="tertiary" size={1} fit bold italic>
+          <Text
+            margin="10px 0 0"
+            textColor={theme.screen.colors.orange}
+            size={1}
+            fit
+            bold
+            italic
+          >
             "générateur de bonheur"
           </Text>
         </Slide>
@@ -75,17 +102,17 @@ export default class Presentation extends React.Component {
           bgDarken={0.75}
         >
           <Appear fid="1">
-            <Heading size={1} caps fit textColor="primary">
+            <Heading size={1} caps fit textColor={theme.screen.colors.white}>
               Lego addict
             </Heading>
           </Appear>
           <Appear fid="2">
-            <Heading size={1} caps fit textColor="tertiary">
+            <Heading size={1} caps fit textColor={theme.screen.colors.orange}>
               TechLead frontend @Lectra
             </Heading>
           </Appear>
           <Appear fid="3">
-            <Heading size={1} caps fit textColor="primary">
+            <Heading size={1} caps fit textColor={theme.screen.colors.white}>
               Moving to Montréal soon ❤️
             </Heading>
           </Appear>
@@ -107,15 +134,21 @@ export default class Presentation extends React.Component {
           </List>
         </Slide>
 
-        <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+        <Slide
+          transition={["fade"]}
+          bgColor="secondary"
+          textColor={theme.screen.colors.white}
+        >
           <BlockQuote>
             <Quote>
-              <Text textColor="primary">
+              <Text textColor={theme.screen.colors.white}>
                 Redux attempts to make state mutations predictable by imposing
                 certain restrictions on how and when updates can happen
               </Text>
             </Quote>
-            <Cite>Dan Abramov - co-creator of Redux</Cite>
+            <Cite textColor={theme.screen.colors.orange}>
+              Dan Abramov - co-creator of Redux
+            </Cite>
           </BlockQuote>
         </Slide>
 
@@ -177,7 +210,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <CodeSlide
-          bgColor="#2d2d2d"
+          bgColor={theme.screen.colors.quaternary}
           textSize={20}
           transition={[]}
           lang="js"
@@ -238,7 +271,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <CodeSlide
-          bgColor="#2d2d2d"
+          bgColor={theme.screen.colors.quaternary}
           textSize={20}
           transition={[]}
           lang="js"
@@ -315,7 +348,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <CodeSlide
-          bgColor="#2d2d2d"
+          bgColor={theme.screen.colors.quaternary}
           textSize={20}
           transition={[]}
           lang="js"
@@ -331,10 +364,14 @@ export default class Presentation extends React.Component {
           ]}
         />
 
-        <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+        <Slide
+          transition={["fade"]}
+          bgColor="secondary"
+          textColor={theme.screen.colors.white}
+        >
           <BlockQuote>
             <Quote>
-              <Text textColor="primary" textSize={30}>
+              <Text textColor={theme.screen.colors.white} textSize={30}>
                 The mental model is that a saga is like a separate thread in
                 your application that's solely responsible for side effects.
                 <br />
@@ -345,7 +382,9 @@ export default class Presentation extends React.Component {
                 application state and it can dispatch redux actions as well.
               </Text>
             </Quote>
-            <Cite>Redux-Saga - official documentation</Cite>
+            <Cite textColor={theme.screen.colors.orange}>
+              Redux-Saga - official documentation
+            </Cite>
           </BlockQuote>
         </Slide>
 
@@ -408,7 +447,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <CodeSlide
-          bgColor="#2d2d2d"
+          bgColor={theme.screen.colors.quaternary}
           textSize={20}
           transition={[]}
           lang="js"
@@ -420,15 +459,19 @@ export default class Presentation extends React.Component {
           ]}
         />
 
-        <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+        <Slide
+          transition={["fade"]}
+          bgColor="secondary"
+          textColor={theme.screen.colors.white}
+        >
           <BlockQuote>
             <Quote>
-              <Text textColor="primary" textSize={45}>
+              <Text textColor={theme.screen.colors.white} textSize={45}>
                 Event Sourcing ensures that all changes to application state are
                 stored as a sequence of events.
               </Text>
             </Quote>
-            <Cite>Martin Fowler</Cite>
+            <Cite textColor={theme.screen.colors.orange}>Martin Fowler</Cite>
           </BlockQuote>
         </Slide>
 
@@ -480,13 +523,13 @@ export default class Presentation extends React.Component {
         >
           <Appear fid="1">
             <div>
-              <Heading size={1} caps fit textColor="primary">
+              <Heading size={1} caps fit textColor={theme.screen.colors.white}>
                 Effects
               </Heading>
-              <Heading size={1} caps fit textColor="tertiary">
+              <Heading size={1} caps fit textColor={theme.screen.colors.orange}>
                 Driven
               </Heading>
-              <Heading size={1} caps fit textColor="primary">
+              <Heading size={1} caps fit textColor={theme.screen.colors.white}>
                 Orchestrator
               </Heading>
             </div>
@@ -494,7 +537,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <CodeSlide
-          bgColor="#2d2d2d"
+          bgColor={theme.screen.colors.quaternary}
           textSize={20}
           transition={[]}
           lang="js"
@@ -514,7 +557,7 @@ export default class Presentation extends React.Component {
         />
 
         <CodeSlide
-          bgColor="#2d2d2d"
+          bgColor={theme.screen.colors.quaternary}
           textSize={20}
           transition={[]}
           lang="js"
@@ -535,7 +578,7 @@ export default class Presentation extends React.Component {
         />
 
         <CodeSlide
-          bgColor="#2d2d2d"
+          bgColor={theme.screen.colors.quaternary}
           textSize={20}
           transition={[]}
           lang="js"
@@ -555,7 +598,7 @@ export default class Presentation extends React.Component {
         />
 
         <CodeSlide
-          bgColor="#2d2d2d"
+          bgColor={theme.screen.colors.quaternary}
           textSize={20}
           transition={[]}
           lang="js"
@@ -614,7 +657,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <CodeSlide
-          bgColor="#2d2d2d"
+          bgColor={theme.screen.colors.quaternary}
           textSize={20}
           transition={[]}
           lang="js"
@@ -645,7 +688,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <CodeSlide
-          bgColor="#2d2d2d"
+          bgColor={theme.screen.colors.quaternary}
           textSize={20}
           transition={[]}
           lang="js"
@@ -664,13 +707,13 @@ export default class Presentation extends React.Component {
         <Slide
           transition={["slide"]}
           bgImage={images.facepalm.replace("/", "")}
-          bgDarken={0.55}
+          bgDarken={0.7}
         >
-          <Heading size={1} caps fit textColor="primary">
+          <Heading size={1} caps fit textColor={theme.screen.colors.white}>
             Just use redux saga !
           </Heading>
           <Appear fid="2">
-            <Heading size={1} caps fit textColor="tertiary">
+            <Heading size={1} caps fit textColor={theme.screen.colors.orange}>
               nobody, never.
             </Heading>
           </Appear>
@@ -681,11 +724,11 @@ export default class Presentation extends React.Component {
           bgImage={images.montreal.replace("/", "")}
           bgDarken={0.75}
         >
-          <Heading size={1} caps fit textColor="primary">
+          <Heading size={1} caps fit textColor={theme.screen.colors.white}>
             Merci !
           </Heading>
           <Appear fid="2">
-            <Heading size={1} caps fit textColor="tertiary">
+            <Heading size={1} caps fit textColor={theme.screen.colors.orange}>
               @romaindso
             </Heading>
           </Appear>
