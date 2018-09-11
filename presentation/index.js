@@ -36,32 +36,16 @@ import createTheme from "spectacle/lib/themes/default";
 
 // Require CSS
 require("normalize.css");
-// import "./theme-darken.css";
-import "./theme-lighten.css";
+import "./theme-darken.css";
+// import "./theme-lighten.css";
 
 /* THEME DARKEN */
-// const theme = createTheme(
-//   {
-//     primary: "white",
-//     secondary: "#1F2022",
-//     tertiary: "#eb643b",
-//     quaternary: "#2d2d2d",
-//     white: "white",
-//     orange: "#eb643b"
-//   },
-//   {
-//     primary: "Montserrat",
-//     secondary: "Helvetica"
-//   }
-// );
-
-/* THEME LIGHTHEN */
 const theme = createTheme(
   {
-    primary: "#eb643b",
+    primary: "white",
     secondary: "#1F2022",
-    tertiary: "white",
-    quaternary: "white",
+    tertiary: "#eb643b",
+    quaternary: "#2d2d2d",
     white: "white",
     orange: "#eb643b"
   },
@@ -70,6 +54,22 @@ const theme = createTheme(
     secondary: "Helvetica"
   }
 );
+
+/* THEME LIGHTHEN */
+// const theme = createTheme(
+//   {
+//     primary: "#eb643b",
+//     secondary: "#1F2022",
+//     tertiary: "white",
+//     quaternary: "white",
+//     white: "white",
+//     orange: "#eb643b"
+//   },
+//   {
+//     primary: "Montserrat",
+//     secondary: "Helvetica"
+//   }
+// );
 
 export default class Presentation extends React.Component {
   render() {
@@ -134,6 +134,12 @@ export default class Presentation extends React.Component {
           </List>
         </Slide>
 
+        <Slide transition={["fade"]} bgColor="tertiary" textColor="primary">
+          <Heading textColor="secondary" caps>
+            Redux
+          </Heading>
+        </Slide>
+
         <Slide
           transition={["fade"]}
           bgColor="secondary"
@@ -152,18 +158,6 @@ export default class Presentation extends React.Component {
           </BlockQuote>
         </Slide>
 
-        <Slide bgColor="secondary">
-          <Image
-            src={images.tweetredux.replace("/", "")}
-            margin="0px auto 40px"
-          />
-        </Slide>
-
-        <Slide transition={["fade"]} bgColor="tertiary" textColor="primary">
-          <Heading textColor="secondary" caps>
-            Core Concepts
-          </Heading>
-        </Slide>
         <Slide transition={["fade"]} bgColor="tertiary">
           <Heading size={4} textColor="primary" caps>
             Single source of truth
@@ -327,6 +321,12 @@ export default class Presentation extends React.Component {
               There is no clean/easy way to cancel an in-progress thunk
             </S>
           </Text>
+        </Slide>
+
+        <Slide transition={["fade"]} bgColor="tertiary" textColor="primary">
+          <Heading textColor="secondary" caps>
+            Redux-Saga
+          </Heading>
         </Slide>
 
         <Slide transition={["fade"]} bgColor="tertiary">
@@ -717,6 +717,13 @@ export default class Presentation extends React.Component {
               nobody, never.
             </Heading>
           </Appear>
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <Image
+            src={images.tweetredux.replace("/", "")}
+            margin="0px auto 40px"
+          />
         </Slide>
 
         <Slide

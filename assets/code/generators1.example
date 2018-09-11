@@ -1,15 +1,13 @@
 // Declaration
-function* foo() {
-  yield 1;
-  yield 2;
-  yield 3;
+function *foo(x) {
+    var y = 2 * (yield (x + 1));
+    var z = yield (y / 3);
+    return (x + y + z);
 }
 
 // Do nothing
-var it = foo();
+var it = foo( 5 );
 
-// Iterate over the generator
-console.log( it.next() ); // { value:1, done:false }
-console.log( it.next() ); // { value:2, done:false }
-console.log( it.next() ); // { value:3, done:false }
-console.log( it.next() ); // { value:undefined, done:true }
+console.log( it.next() );       // { value:6, done:false }
+console.log( it.next( 12 ) );   // { value:8, done:false }
+console.log( it.next( 2 ) );   // { value:42, done:true } (x=5 + y=24 + z=13) = 42
