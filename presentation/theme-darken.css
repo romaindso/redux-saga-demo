@@ -7,6 +7,11 @@ code {
   color: white;
 }
 
+/* Hack to override CodeStyle pre style*/
+.codeslide-full-height pre {
+  padding: 0 !important;
+}
+
 code[class*="language-"],
 pre[class*="language-"] {
   color: #ccc;

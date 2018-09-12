@@ -1,8 +1,3 @@
-// TakeLatest
-function* watchFetchProducts() {
-  yield takeLatest('PRODUCTS_REQUESTED', fetchProducts)
-}
-
 // Take
 function* loginFlow() {
   while (true) {
@@ -11,4 +6,9 @@ function* loginFlow() {
     yield take('LOGOUT')
     // ... perform the logout logic
   }
+}
+
+// TakeLatest
+function* watchFetchProducts() {
+  yield takeLatest('PRODUCTS_REQUESTED', fetchProducts)
 }

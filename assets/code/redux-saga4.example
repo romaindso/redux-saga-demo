@@ -11,7 +11,7 @@ function* loginFlow() {
   }
 }
 
-// Select
+// Selector
 export const getCart = state => state.cart
 
 function* checkout() {

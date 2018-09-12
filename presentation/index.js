@@ -127,10 +127,10 @@ export default class Presentation extends React.Component {
           </Heading>
           <List Fill>
             <ListItem>manage more state than ever</ListItem>
-            <ListItem>
+            <ListItem margin="15px 0 0 0">
               lost control over the when, why, and how state is updated
             </ListItem>
-            <ListItem>mutation and asynchronicity</ListItem>
+            <ListItem margin="15px 0 0 0">mutation and asynchronicity</ListItem>
           </List>
         </Slide>
 
@@ -233,11 +233,19 @@ export default class Presentation extends React.Component {
           <br />
           <List Fill>
             <ListItem>functions (redux-thunk)</ListItem>
-            <ListItem>promises (redux-promise)</ListItem>
-            <ListItem>generators (redux-saga)</ListItem>
-            <ListItem>observables (redux-observable)</ListItem>
-            <ListItem>...</ListItem>
+            <ListItem margin="15px 0 0 0">promises (redux-promise)</ListItem>
+            <ListItem margin="15px 0 0 0">generators (redux-saga)</ListItem>
+            <ListItem margin="15px 0 0 0">
+              observables (redux-observable)
+            </ListItem>
+            <ListItem margin="15px 0 0 0">...</ListItem>
           </List>
+        </Slide>
+
+        <Slide transition={["fade"]} bgColor="tertiary" textColor="primary">
+          <Heading textColor="secondary" caps>
+            Redux-Thunk
+          </Heading>
         </Slide>
 
         <Slide transition={["fade"]} bgColor="tertiary">
@@ -398,6 +406,15 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
 
+        <Slide transition={["fade"]} bgColor="tertiary" textColor="primary">
+          <Heading textColor="secondary" caps>
+            1<sup>st</sup> Pillar
+          </Heading>
+          <Heading size={4} textColor="primary" caps>
+            Generators
+          </Heading>
+        </Slide>
+
         <Slide transition={["fade"]} bgColor="tertiary">
           <Heading size={4} textColor="primary" caps>
             Built on top of Generators
@@ -458,6 +475,15 @@ export default class Presentation extends React.Component {
             { loc: [10, 15] }
           ]}
         />
+
+        <Slide transition={["fade"]} bgColor="tertiary" textColor="primary">
+          <Heading textColor="secondary" caps>
+            2<sup>nd</sup> Pillar
+          </Heading>
+          <Heading size={4} textColor="primary" caps>
+            Effects
+          </Heading>
+        </Slide>
 
         <Slide
           transition={["fade"]}
@@ -564,15 +590,15 @@ export default class Presentation extends React.Component {
           code={require("raw-loader!../assets/code/redux-saga3.example")}
           ranges={[
             {
-              loc: [0, 4],
+              loc: [0, 9],
+              note: `Creates an Effect description that instructs the middleware to wait for a specified 
+              action on the Store. The Generator is suspended until an action that matches pattern is dispatched.`
+            },
+            {
+              loc: [10, 15],
               note: `Each time an action which matches pattern is dispatched to the store, takeLatest starts a 
               new saga task in the background. If a saga task was started previously, and if this task is still running, 
               the task will be cancelled`
-            },
-            {
-              loc: [5, 14],
-              note: `Creates an Effect description that instructs the middleware to wait for a specified 
-              action on the Store. The Generator is suspended until an action that matches pattern is dispatched.`
             }
           ]}
         />
@@ -596,6 +622,25 @@ export default class Presentation extends React.Component {
             }
           ]}
         />
+
+        <Slide transition={["fade"]} bgColor="tertiary">
+          <Heading size={4} textColor="primary" caps>
+            API
+          </Heading>
+          <Heading size={3} textColor="secondary">
+            A dozen effects only
+          </Heading>
+          <List Fill>
+            <ListItem>call</ListItem>
+            <ListItem margin="10px 0 0 0">put</ListItem>
+            <ListItem margin="10px 0 0 0">take</ListItem>
+            <ListItem margin="10px 0 0 0">fork</ListItem>
+            <ListItem margin="10px 0 0 0">select</ListItem>
+            <ListItem margin="10px 0 0 0">take</ListItem>
+            <ListItem margin="10px 0 0 0">takeLatest / takeEvery</ListItem>
+            <ListItem margin="10px 0 0 0">...</ListItem>
+          </List>
+        </Slide>
 
         <CodeSlide
           bgColor={theme.screen.colors.quaternary}
@@ -656,19 +701,22 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
 
+        <Slide transition={["fade"]} bgColor="tertiary" textColor="primary">
+          <Heading textColor="secondary" caps>
+            Testing
+          </Heading>
+        </Slide>
+
         <CodeSlide
+          className="codeslide-full-height"
           bgColor={theme.screen.colors.quaternary}
           textSize={20}
           transition={[]}
           lang="js"
           code={require("raw-loader!../assets/code/redux-saga6.example")}
           ranges={[
-            { loc: [0, 0], title: "Testing" },
             {
-              loc: [0, 9]
-            },
-            {
-              loc: [10, 26]
+              loc: [0, 26]
             }
           ]}
         />
@@ -688,18 +736,15 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <CodeSlide
+          className="codeslide-full-height"
           bgColor={theme.screen.colors.quaternary}
           textSize={20}
           transition={[]}
           lang="js"
           code={require("raw-loader!../assets/code/redux-saga7.example")}
           ranges={[
-            { loc: [0, 0], title: "Testing with redux-saga-test-plan" },
             {
-              loc: [0, 9]
-            },
-            {
-              loc: [10, 27]
+              loc: [0, 27]
             }
           ]}
         />

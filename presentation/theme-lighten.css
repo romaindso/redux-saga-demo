@@ -11,6 +11,11 @@ https://prismjs.com/download.html#themes=prism-coy&languages=markup+css+clike+ja
   color: black !important;
 }
 
+/* Hack to override CodeStyle pre style*/
+.codeslide-full-height pre {
+  padding: 0 !important;
+}
+
 code[class*="language-"],
 pre[class*="language-"] {
   color: black;
