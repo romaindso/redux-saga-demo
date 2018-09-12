@@ -26,7 +26,9 @@ const images = {
   tweetredux: require("../assets/images/tweet-redux.jpg"),
   montreal: require("../assets/images/montreal.jpg"),
   orchestre: require("../assets/images/orchestre.jpg"),
-  facepalm: require("../assets/images/facepalm.jpg")
+  facepalm: require("../assets/images/facepalm.jpg"),
+  reduxsagafull1: require("../assets/images/redux-saga-full-1.jpg"),
+  reduxsagafull2: require("../assets/images/redux-saga-full-2.jpg")
 };
 
 preloader(images);
@@ -540,6 +542,26 @@ export default class Presentation extends React.Component {
               </S>
             </Text>
           </Appear>
+        </Slide>
+
+        <Slide bgColor="#1f2022">
+          <Image
+            src={images.reduxsagafull1.replace("/", "")}
+            margin="0px auto 40px"
+          />
+          <Heading size={4} caps fit textColor="primary" textFont="primary">
+            Full Workflow
+          </Heading>
+        </Slide>
+
+        <Slide bgColor="#1f2022">
+          <Image
+            src={images.reduxsagafull2.replace("/", "")}
+            margin="0px auto 40px"
+          />
+          <Heading size={4} caps fit textColor="primary" textFont="primary">
+            Full Workflow
+          </Heading>
         </Slide>
 
         <Slide
