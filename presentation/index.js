@@ -473,8 +473,10 @@ export default class Presentation extends React.Component {
           code={require("raw-loader!../assets/code/generators1.example")}
           ranges={[
             { loc: [0, 6], title: "Syntax" },
-            { loc: [7, 9] },
-            { loc: [10, 15] }
+            { loc: [0, 9] },
+            { loc: [0, 11] },
+            { loc: [0, 12] },
+            { loc: [0, 13] }
           ]}
         />
 
@@ -655,11 +657,11 @@ export default class Presentation extends React.Component {
           <List Fill>
             <ListItem>call</ListItem>
             <ListItem margin="10px 0 0 0">put</ListItem>
-            <ListItem margin="10px 0 0 0">take</ListItem>
             <ListItem margin="10px 0 0 0">fork</ListItem>
             <ListItem margin="10px 0 0 0">select</ListItem>
-            <ListItem margin="10px 0 0 0">take</ListItem>
-            <ListItem margin="10px 0 0 0">takeLatest / takeEvery</ListItem>
+            <ListItem margin="10px 0 0 0">
+              take / takeLatest / takeEvery
+            </ListItem>
             <ListItem margin="10px 0 0 0">...</ListItem>
           </List>
         </Slide>

@@ -8,6 +8,6 @@ function *foo(x) {
 // Do nothing
 var it = foo( 5 );
 
-console.log( it.next() );       // { value:6, done:false }
-console.log( it.next( 12 ) );   // { value:8, done:false }
+console.log( it.next() );      // { value:6, done:false }
+console.log( it.next( 12 ) );  // { value:8, done:false }
 console.log( it.next( 1 ) );   // { value:42, done:true } (x=5 + y=(2*12) + z=1) = 30
