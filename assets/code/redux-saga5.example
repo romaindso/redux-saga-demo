@@ -28,11 +28,13 @@ export default function* watchFetchProducts() {
   yield takeLatest('PRODUCTS_REQUESTED', fetchProducts);
 }
 
-function* fetchProducts() {
+export function* fetchProducts() {
   const token = yield select(getToken);
-  const const { response, error }  = yield call(Api.fetch, '/products', token)
+  const { response, error } = yield call(Api.fetch, '/products', token)
   if (!error) {
-    yield put({ type: 'PRODUCTS_REQUESTED_SUCCESS', response.data.products })
+    yield put({ 
+      type: 'PRODUCTS_REQUESTED_SUCCESS', response.data.products 
+    })
   } else {
     yield put({ type: 'PRODUCTS_REQUESTED_FAILURE', error })
   }

@@ -1,6 +1,6 @@
 function* fetchProducts() {
   const token = yield select(getToken);
-  const const { response, error }  = yield call(Api.fetch, '/products', token)
+  const { response, error } = yield call(Api.fetch, '/products', token)
   if (!error) {
     yield put({ type: 'PRODUCTS_REQUESTED_SUCCESS', data: response.data })
   } else {

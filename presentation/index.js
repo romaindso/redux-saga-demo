@@ -276,7 +276,7 @@ export default class Presentation extends React.Component {
 
         <CodeSlide
           bgColor={theme.screen.colors.quaternary}
-          textSize={20}
+          textSize={25}
           transition={[]}
           lang="js"
           code={require("raw-loader!../assets/code/redux-thunk.1.example")}
@@ -359,7 +359,7 @@ export default class Presentation extends React.Component {
 
         <CodeSlide
           bgColor={theme.screen.colors.quaternary}
-          textSize={20}
+          textSize={24}
           transition={[]}
           lang="js"
           code={require("raw-loader!../assets/code/redux-saga1.example")}
@@ -467,7 +467,7 @@ export default class Presentation extends React.Component {
 
         <CodeSlide
           bgColor={theme.screen.colors.quaternary}
-          textSize={20}
+          textSize={25}
           transition={[]}
           lang="js"
           code={require("raw-loader!../assets/code/generators1.example")}
@@ -476,7 +476,7 @@ export default class Presentation extends React.Component {
             { loc: [0, 9] },
             { loc: [0, 11] },
             { loc: [0, 12] },
-            { loc: [0, 13] }
+            { loc: [0, 14] }
           ]}
         />
 
@@ -588,7 +588,7 @@ export default class Presentation extends React.Component {
 
         <CodeSlide
           bgColor={theme.screen.colors.quaternary}
-          textSize={20}
+          textSize={25}
           transition={[]}
           lang="js"
           code={require("raw-loader!../assets/code/redux-saga2.example")}
@@ -608,7 +608,7 @@ export default class Presentation extends React.Component {
 
         <CodeSlide
           bgColor={theme.screen.colors.quaternary}
-          textSize={20}
+          textSize={25}
           transition={[]}
           lang="js"
           code={require("raw-loader!../assets/code/redux-saga3.example")}
@@ -629,7 +629,7 @@ export default class Presentation extends React.Component {
 
         <CodeSlide
           bgColor={theme.screen.colors.quaternary}
-          textSize={20}
+          textSize={25}
           transition={[]}
           lang="js"
           code={require("raw-loader!../assets/code/redux-saga4.example")}
@@ -668,7 +668,7 @@ export default class Presentation extends React.Component {
 
         <CodeSlide
           bgColor={theme.screen.colors.quaternary}
-          textSize={20}
+          textSize={23}
           transition={[]}
           lang="js"
           code={require("raw-loader!../assets/code/redux-saga5.example")}
@@ -687,7 +687,7 @@ export default class Presentation extends React.Component {
               note: "Listen to a specific redux action and delagate to a saga"
             },
             {
-              loc: [25, 39]
+              loc: [25, 41]
             }
           ]}
         />
@@ -734,7 +734,7 @@ export default class Presentation extends React.Component {
         <CodeSlide
           className="codeslide-full-height"
           bgColor={theme.screen.colors.quaternary}
-          textSize={20}
+          textSize={22}
           transition={[]}
           lang="js"
           code={require("raw-loader!../assets/code/redux-saga6.example")}
@@ -762,7 +762,7 @@ export default class Presentation extends React.Component {
         <CodeSlide
           className="codeslide-full-height"
           bgColor={theme.screen.colors.quaternary}
-          textSize={20}
+          textSize={22}
           transition={[]}
           lang="js"
           code={require("raw-loader!../assets/code/redux-saga7.example")}
