@@ -7,11 +7,11 @@
     "clean": "rimraf dist",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.production.js",
     "lint": "eslint --ext .js,.jsx .",
-    "deploy": "npm run clean & npm run build && surge -p .",
+    "deploy": "git push origin :gh-pages && git subtree push --prefix dist origin gh-pages",
     "export": "spectacle-renderer --delay 3000",
     "start": "cross-env NODE_ENV=development node server.js"
   },
-  "author": "",
+  "author": "Romain Durand Saint Omer",
   "license": "MIT",
   "dependencies": {
     "normalize.css": "7.0.0",
