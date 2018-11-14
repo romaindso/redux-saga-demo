@@ -94,30 +94,8 @@ export default class Presentation extends React.Component {
             bold
             italic
           >
-            "générateur de bonheur"
+            "Happiness generator"
           </Text>
-        </Slide>
-
-        <Slide
-          transition={["slide"]}
-          bgImage={images.montreal.replace("/", "")}
-          bgDarken={0.75}
-        >
-          <Appear fid="1">
-            <Heading size={1} caps fit textColor={theme.screen.colors.white}>
-              Lego addict
-            </Heading>
-          </Appear>
-          <Appear fid="2">
-            <Heading size={1} caps fit textColor={theme.screen.colors.orange}>
-              TechLead frontend @Lectra
-            </Heading>
-          </Appear>
-          <Appear fid="3">
-            <Heading size={1} caps fit textColor={theme.screen.colors.white}>
-              Moving to Montréal soon ❤️
-            </Heading>
-          </Appear>
         </Slide>
 
         <Slide transition={["fade"]} bgColor="tertiary">
@@ -204,23 +182,6 @@ export default class Presentation extends React.Component {
             pure reducers
           </Heading>
         </Slide>
-
-        <CodeSlide
-          bgColor={theme.screen.colors.quaternary}
-          textSize={20}
-          transition={[]}
-          lang="js"
-          code={require("raw-loader!../assets/code/core-store3.example")}
-          ranges={[
-            { loc: [0, 0], title: "Reducers" },
-            { loc: [0, 1] },
-            { loc: [9, 10], note: "take the previous state and an action..." },
-            { loc: [10, 11] },
-            { loc: [11, 12] },
-            { loc: [19, 20], note: "handle differents action type..." },
-            { loc: [11, 19], note: "and return a new state for each one" }
-          ]}
-        />
 
         <Slide transition={["fade"]} bgColor="tertiary" textColor="primary">
           <Heading textColor="secondary" caps>
@@ -489,22 +450,6 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
 
-        <Slide
-          transition={["fade"]}
-          bgColor="secondary"
-          textColor={theme.screen.colors.white}
-        >
-          <BlockQuote>
-            <Quote>
-              <Text textColor={theme.screen.colors.white} textSize={45}>
-                Event Sourcing ensures that all changes to application state are
-                stored as a sequence of events.
-              </Text>
-            </Quote>
-            <Cite textColor={theme.screen.colors.orange}>Martin Fowler</Cite>
-          </BlockQuote>
-        </Slide>
-
         <Slide transition={["fade"]} bgColor="tertiary">
           <Heading size={4} textColor="primary" caps>
             Effects
@@ -759,20 +704,6 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
 
-        <CodeSlide
-          className="codeslide-full-height"
-          bgColor={theme.screen.colors.quaternary}
-          textSize={22}
-          transition={[]}
-          lang="js"
-          code={require("raw-loader!../assets/code/redux-saga7.example")}
-          ranges={[
-            {
-              loc: [0, 27]
-            }
-          ]}
-        />
-
         <Slide
           transition={["slide"]}
           bgImage={images.facepalm.replace("/", "")}
@@ -801,7 +732,7 @@ export default class Presentation extends React.Component {
           bgDarken={0.75}
         >
           <Heading size={1} caps fit textColor={theme.screen.colors.white}>
-            Merci !
+            Thank you !
           </Heading>
           <Appear fid="2">
             <Heading size={1} caps fit textColor={theme.screen.colors.orange}>
