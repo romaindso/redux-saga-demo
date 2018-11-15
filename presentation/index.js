@@ -719,13 +719,6 @@ export default class Presentation extends React.Component {
           </Appear>
         </Slide>
 
-        <Slide bgColor="secondary">
-          <Image
-            src={images.tweetredux.replace("/", "")}
-            margin="0px auto 40px"
-          />
-        </Slide>
-
         <Slide
           transition={["slide"]}
           bgImage={images.montreal.replace("/", "")}
